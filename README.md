@@ -35,7 +35,7 @@ pip install psycopg2-binary -t python/
 ## Create a Zip File of the Layer
 
 ```powershell
-cd ..  # Navigate back to my-layer directory
+cd .. 
 Compress-Archive -Path .\my-layer\python\* -DestinationPath my-layer.zip
 ```
 ## Upload the Layer to AWS Lambda
