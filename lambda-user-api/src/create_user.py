@@ -93,4 +93,3 @@ def create_user(event, context):
 
 #NOTES:
 # Once the connection is established, cursor() is used to interact with the database. A cursor object allows you to execute SQL queries and retrieve results from the database.
-# arn:aws:lambda:ap-south-1:975050329123:layer:psycopg2-layer:1
