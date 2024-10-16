@@ -90,10 +90,10 @@ aws lambda publish-layer-version --layer-name your-layer-name --description "you
    ```sql
    \l
    ```
-    **Time to create tables.**
-   Create the following tables:
-
-     **`users` Table**:
+  
+  ## Create the following tables
+   - users Table
+     
      ```sql
      CREATE TABLE users (
          user_id UUID PRIMARY KEY,
@@ -106,8 +106,9 @@ aws lambda publish-layer-version --layer-name your-layer-name --description "you
          is_active BOOLEAN DEFAULT TRUE
      );
      ```
- 
-     **`managers` Table**:
+     
+  - managers Table
+
      ```sql
      CREATE TABLE managers (
          id UUID PRIMARY KEY,
