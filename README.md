@@ -11,7 +11,7 @@ This application follows infrastructure as a Code (IaaC) approach using serverle
 ## Project Setup
 Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/Mayank06711/crud_serverless
 cd lambda-user-api
 ```
 ## Prerequisites to 
