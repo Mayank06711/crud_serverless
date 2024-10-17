@@ -119,6 +119,19 @@ aws lambda publish-layer-version --layer-name your-layer-name --description "you
    ```sql
     \dt
    ```
-
-
+## Connecting with database
+But before moving forward in this section you must install psycopg2-binary either in your system or in your virtual environment to ensure your development environment is properly configured to use psycopg2 (use for connecting with database (PostgreSQL) it's a bridge between your Python application and your database).
+We are installing psycopg2-binary because it is pre-compiled version of psycopg2, which makes it easier to install and use.
+- *get_db_connection*:
+  - This funtion is responsible for establishing a connection to the PostgreSQL database using the provided connection parameters such as host, 
+    database, user, password, and port.
+  - This funtion uses psycopg2 to connect with our RDs (postgreSQL)  database and return a connection object which represents an open connection 
+    between our Python application and the PostgreSQL database essential for managing SQL queries and mamaging ransactions.
+  - This connection object has a methods like cursor, which is used to execute SQL queries and considered as data element **you can have multiple 
+    cursor on the same data within single connection and fetch results and commit use to commit final changes to 
+    database close to close connection and rollback to roll back all transactions.
+    **Note**
+## Creating Functions
+   **create_user**:
+ - This funtions creates a new user.
 
