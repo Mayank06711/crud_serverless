@@ -209,8 +209,66 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   - **Simplified Error Handling**: Errors can be caught and managed within each individual function, providing clearer feedback.
   - **Scalability**: Adding new features or endpoints can be done by simply creating new functions without altering the existing codebase.
 
-  But since I wrote this with idea to use it thereby leaving it as it is in the `handler.py` file that I will be using as a reference point for understanding how requests could be routed in a different design and experiment with this, the current implementation prioritizes a clean, modular structure over a monolithic design.
+  But since I wrote this with idea to use it thereby leaving it as it is in the `handler.py` file that I will be using as a reference point for understanding how requests could be routed in a different 
+  design and experiment with this, the current implementation prioritizes a clean, modular structure over a monolithic design.
 
+### Endpoint
+
+## 1. **/create_user**
+
+- **Method**: POST
+- **Api**: https://cpt08foqd3.execute-api.ap-south-1.amazonaws.com/create_user
+- **Request Body**: 
+  ```json
+  {
+     "full_name": "Maya Soni",
+    "mob_num": "+911231067899",
+    "pan_num": "ABCDE1674G",
+    "manager_id":"f47ac10b-58cc-4372-a567-0e02b2c3d478"
+  }
+
+  ```
+
+### 2. /get_users
+
+- **Method:** POST
+- **API Link:** https://zvdg0yl602.execute-api.ap-south-1.amazonaws.com/get_users
+- **Request Body:**
+  ```json
+  {
+     "mob_num": "+911231567899",
+    "manager_id": "f47ac10b-58cc-4372-a567-0e02b2c3d478"
+  }
+  ```
+
+### 3. /update_user
+
+- **Method:** POST
+- **API:** https://cpt08foqd3.execute-api.ap-south-1.amazonaws.com/update_user
+- **Request Body:**
+  ```json
+  {
+    "user_ids": ["09d33403-ba31-4794-bab5-f573529d2adb"],
+    "update_data": {
+      "full_name": "Mayank Soni",
+      "mob_num": "9876543210",
+      "pan_num": "ABCDE3674G",
+      "manager_id": "f47ac10b-58cc-4372-a567-0e02b2c3d478"
+    }
+  }
+  ```
+
+### 4. /delete_user
+
+- **Method:** POST
+- **API Link:** https://cpt08foqd3.execute-api.ap-south-1.amazonaws.com/delete_user
+- **Request Body:**
+  ```json
+  {
+    "user_id": "09d33403-ba31-4794-bab5-f573529d2adb",
+    "mob_num": "1231567899"
+  }
+  ```
 
 ## Deployment
 
