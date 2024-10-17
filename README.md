@@ -3,15 +3,36 @@ This is a assignment which I will most probably complete within two days.
 This application follows infrastructure as a Code (IaaC) approach using serverless framework.
 
 ## Technology used:
-- Serverless framework
-- AWS-RDS (PostgreSQL as Database)
-- Python 
-- Any IDE (Like VSCode)
+- Serverless framework: For deploying and managing AWS Lambda functions.
+- AWS-RDS (PostgreSQL as Database):A managed relational database service for handling user data.
+- Python: The language used for writing the Lambda functions
+- Any IDE (Like VSCode): For writing and editing code efficiently.
 
-## Features
-- Create, read, update, and delete (CRUD) operations for user records
-- Utilizes AWS Lambda functions for serverless computing
-- Connects to a PostgreSQL database hosted on Amazon RDS
+## Project Setup
+Clone the Repository
+```bash
+git clone <your-repo-url>
+cd lambda-user-api
+```
+## Prerequisites to 
+Ensure the following tools are installed on your machine
+ -Node.js: If not in your machine Download and install from its official website.
+ -Serverless Framework: After installing Node.js, install the Serverless framework globally:
+```bash
+ npm install -g serverless
+ ```
+ -AWS CLI: Install AWS CLI to configure your AWS credentials and run set up your credentials
+ 
+```bash
+ aws configure
+```
+ -PostgreSQL: Install PostgreSQL and PgAdmin to interact with your RDS instance
+  To Run Funtions Locally:
+  ```bash
+  serverless invoke local --function nameOfFuntions
+  ```
+
+
  # AWS Lambda Layer Creation on Windows
 
 Instructions on how to create and deploy an AWS Lambda Layer from scratch using a Windows machine.
@@ -119,6 +140,7 @@ aws lambda publish-layer-version --layer-name your-layer-name --description "you
    ```sql
     \dt
    ```
+  Now since there is no route to create managers run the below command to create manager first.
 ## Connecting with database
 But before moving forward in this section you must install psycopg2-binary either in your system or in your virtual environment to ensure your development environment is properly configured to use psycopg2 (use for connecting with database (PostgreSQL) it's a bridge between your Python application and your database).
 We are installing psycopg2-binary because it is pre-compiled version of psycopg2, which makes it easier to install and use.
@@ -172,4 +194,57 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   - Validates user IDs before deletion.
   - Ensures that users are actually present in the database before attempting to delete.
   - Returns a confirmation message or an error if the deletion fails.
+
+### 5. **handler**
+- **Description**: This function could acts as the main entry point for routing API requests to the appropriate functions. However, it's important to note that this routing mechanism requires specific configurations in the `serverless.yml` file to work effectively. In this project, I opted not to use this monolithic approach because it can complicate deployment and maintenance. Instead, each API endpoint is handled by its dedicated function defined in the `serverless.yml` file, promoting better modularity and separation of concerns.
+
+  This approach allows for:
+  - **Independent Functionality**: Each function handles a specific task, making it easier to update and manage.
+  - **Simplified Error Handling**: Errors can be caught and managed within each individual function, providing clearer feedback.
+  - **Scalability**: Adding new features or endpoints can be done by simply creating new functions without altering the existing codebase.
+
+  But since I wrote this with idea to use it thereby leaving it as it is in the `handler.py` file that I will be using as a reference point for understanding how requests could be routed in a different design and experiment with this, the current implementation prioritizes a clean, modular structure over a monolithic design.
+
+
+## Deployment
+
+The project is set up to be deployed using the Serverless Framework. The configuration is managed in the `serverless.yml` file, which defines the AWS Lambda functions, event triggers, environment variables, and other necessary settings.
+
+- Run below command to deploy
+ ```bash
+ serverless deploy
+ ```
+
+### Environment Variables
+Sensitive data such as database credentials are passed in serverless.yaml file so that it can be accessile to all lambda funtions when needed alternatively we could ave used AWS Systems Manager (SSM) Parameter Store, this enhance security. The environment variables defined in `serverless.yml` include:
+- `DB_HOST`
+- `DB_NAME`
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_PORT`
+
+## Best Practices I Used 
+- **Closing Cursors**: Each function that interacts with the database ensures that cursors are properly closed after operations to prevent resource leaks and improve performance.
+- **Error Handling**: Each function includes error handling to manage different types of errors gracefully, providing meaningful responses to the client.
+- **Modularity**: Functions are kept modular and focused on specific tasks, making the codebase easier to maintain and extend.
+
+### Solution Of Problem You May Face After Deployment (If Your layer arn not working)
+Use requirements.txt for Dependency Management of your application
+
+ **Create requirements.txt**: 
+ -Add the dependencies needed for the project, like psycopg2-binary, in the requirements.txt file.
+
+```bash
+npm install --save serverless-python-requirements@latest
+```
+
+```bash
+ pip install -r requirements.txt
+```
+ 
+## Conclusion
+
+This serverless user crud APi provides a robust framework for managing user data in a scalable and efficient manner. Each function is designed to handle specific tasks, allowing for clear separation of concerns and improved maintainability.
+
+
 
