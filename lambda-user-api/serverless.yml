@@ -5,12 +5,34 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: python3.9
+  region: ap-south-1
+  runtime: python3.8
+  environment:  # Adding environment variables here so our functions can use it
+    DB_HOST: "serverles.crcaoqaoelsz.ap-south-1.rds.amazonaws.com"
+    DB_NAME: "serverless" 
+    DB_USER: "postgres" 
+    DB_PASSWORD: "mayank1234" 
+    DB_PORT: 5432
 
 functions:
-  hello:
-    handler: handler.hello
+  api_handler:  # Single handler for all routes
+    handler: src/handler.route_handler  # This is the entry point
     events:
       - httpApi:
-          path: /
+          path: /create_user
+          method: post
+      - httpApi:
+          path: /get_users
           method: get
+      - httpApi:
+          path: /update_user
+          method: put
+      - httpApi:
+          path: /delete_user
+          method: delete
+    layers:
+      - arn:aws:lambda:ap-south-1:975050329123:layer:psycopg2-layer:1  # Ensure ARN is correct for any layers
+
+package:
+  include:
+    - src/**
