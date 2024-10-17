@@ -39,7 +39,7 @@ def update_User(event, context):
         # Validate manager_id if present in update_data
         if "manager_id" in update_data:
             manager_id = update_data["manager_id"]
-            cursor.execute("SELECT manager_id FROM managers WHERE manager_id = %s", (manager_id,))
+            cursor.execute("SELECT manager_id FROM managers WHERE id = %s", (manager_id,))
             if not cursor.fetchone():
                 return {
                     "statusCode": 400,
@@ -120,7 +120,6 @@ def update_User(event, context):
         }
     except Exception as e:
         # Log the error for debugging purposes
-        print("Hi got error in update_User function:", e)
         return {
             "statusCode": 500,
             "body": json.dumps({"Error": str(e)}),

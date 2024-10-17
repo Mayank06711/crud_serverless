@@ -45,7 +45,7 @@ def create_user(event, context):
         
         # Validate manager ID if provided
         if manager_id:
-            cursor.execute("SELECT 1 FROM managers WHERE manager_id = %s", (manager_id,)) #,manager_id  is treated as a plain string and not executable code preventing from SQL injection.
+            cursor.execute("SELECT 1 FROM managers WHERE id = %s", (manager_id,)) #,manager_id  is treated as a plain string and not executable code preventing from SQL injection.
             if cursor.fetchone() is None:
                 return {
                     "statusCode": 400,
