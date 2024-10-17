@@ -156,6 +156,19 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   - Supports filtering by user ID, mobile number, or manager ID.
   - Returns user data in a structured format or an error message if the operation fails.
 
+### 3. **update_user**
+- **Description**: Updates user information in the database.
+- **File**: `update_user.py`
+- **Key Features**:
+  - Validates user IDs and checks for their existence in the database.
+  - Allows bulk updates for specific fields, primarily the manager ID.
+  - Utilizes a database connection for executing update queries.
+  - Returns a success message or an error for missing data or invalid operations.
 
-
-
+### 4. **delete_user**
+- **Description**: Deletes a user from the database.
+- **File**: `delete_user.py`
+- **Key Features**:
+  - Validates user IDs before deletion.
+  - Ensures that users are actually present in the database before attempting to delete.
+  - Returns a confirmation message or an error if the deletion fails.
