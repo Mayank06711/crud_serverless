@@ -213,6 +213,7 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   design and experiment with this, the current implementation prioritizes a clean, modular structure over a monolithic design.
 
 ### Endpoint
+All endpoints are working and example.
 
 ## 1. **/create_user**
 
@@ -269,6 +270,8 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
     "mob_num": "1231567899"
   }
   ```
+**Response**
+ Each enpoints will return success and error response.
 
 ## Deployment
 
