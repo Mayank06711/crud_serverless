@@ -16,17 +16,17 @@ cd lambda-user-api
 ```
 ## Prerequisites to 
 Ensure the following tools are installed on your machine
- -Node.js: If not in your machine Download and install from its official website.
- -Serverless Framework: After installing Node.js, install the Serverless framework globally:
+ - Node.js: If not in your machine Download and install from its official website.
+ - Serverless Framework: After installing Node.js, install the Serverless framework globally:
 ```bash
  npm install -g serverless
  ```
- -AWS CLI: Install AWS CLI to configure your AWS credentials and run set up your credentials
+ AWS CLI: Install AWS CLI to configure your AWS credentials and run set up your credentials
  
 ```bash
  aws configure
 ```
- -PostgreSQL: Install PostgreSQL and PgAdmin to interact with your RDS instance
+ PostgreSQL: Install PostgreSQL and PgAdmin to interact with your RDS instance
   To Run Funtions Locally:
   ```bash
   serverless invoke local --function nameOfFuntions
@@ -140,7 +140,13 @@ aws lambda publish-layer-version --layer-name your-layer-name --description "you
    ```sql
     \dt
    ```
-  Now since there is no route to create managers run the below command to create manager first.
+  Now since there is no route to create managers run the below command to create manager first or make one through AWS console in your database.
+   ```sql
+     INSERT INTO managers (id, name) VALUES 
+     ('f47ac10b-58cc-4372-a567-0e02b2c3d479', 'John Doe');
+   ```
+  **NOTE Change ID since it might not be unique** 
+  
 ## Connecting with database
 But before moving forward in this section you must install psycopg2-binary either in your system or in your virtual environment to ensure your development environment is properly configured to use psycopg2 (use for connecting with database (PostgreSQL) it's a bridge between your Python application and your database).
 We are installing psycopg2-binary because it is pre-compiled version of psycopg2, which makes it easier to install and use.
