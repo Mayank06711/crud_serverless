@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 import json
-from db import get_db_connection
+from .db import get_db_connection
 
 def update_User(event, context):
     # Establish database connection

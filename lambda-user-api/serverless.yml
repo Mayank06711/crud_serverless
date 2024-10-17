@@ -34,7 +34,7 @@ provider:
 
 functions:
   create_user:
-    handler: src/create_user.create_user  
+    handler: src.create_user.create_user  
     events:
       - httpApi:
           path: /create_user
@@ -42,7 +42,7 @@ functions:
     layers:
       - arn:aws:lambda:ap-south-1:975050329123:layer:psycopg2-layer:1  # arn layer created on aws lambda layer
   get_users:
-    handler: src/get_user.get_users  
+    handler: src.get_user.get_users  
     events:
       - httpApi:
           path: /get_users
@@ -50,7 +50,7 @@ functions:
     layers:
       - arn:aws:lambda:ap-south-1:975050329123:layer:psycopg2-layer:1
   delete_user:
-    handler: src/delete_user.delete_User  
+    handler: src.delete_user.delete_User  
     events:
       - httpApi:
           path: /delete_user
@@ -58,7 +58,7 @@ functions:
     layers:
       - arn:aws:lambda:ap-south-1:975050329123:layer:psycopg2-layer:1
   update_user:
-    handler: src/update_user.update_User  
+    handler: src.update_user.update_User  
     events:
       - httpApi:
           path: /update_user
@@ -69,3 +69,4 @@ functions:
 package:
   include:
     - src/**
+    - db.py  ## Include db.py if it's not in src

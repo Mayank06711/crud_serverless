@@ -3,7 +3,7 @@ import uuid
 import re
 
 # importing db connection function, it is telling that from db file (which is at same directory level, bring get_db_connection funtion)
-from db import get_db_connection
+from .db import get_db_connection
 
 def create_user(event, context):
     conn = get_db_connection()

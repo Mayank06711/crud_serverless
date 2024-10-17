@@ -1,8 +1,8 @@
 import json
-from create_user import create_user
-from get_user import get_users
-from update_user import update_User
-from delete_user import delete_User
+from .create_user import create_user
+from .get_user import get_users
+from .update_user import update_User
+from .delete_user import delete_User
 
 def route_handler(event, context):
     # Check the HTTP method and path from the event

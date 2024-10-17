@@ -1,5 +1,5 @@
 import json
-from db import get_db_connection
+from .db import get_db_connection
 
 def delete_User(event, context):
     # Establish database connection
