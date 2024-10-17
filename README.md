@@ -172,3 +172,4 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   - Validates user IDs before deletion.
   - Ensures that users are actually present in the database before attempting to delete.
   - Returns a confirmation message or an error if the deletion fails.
+
