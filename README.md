@@ -130,6 +130,7 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   - This connection object has a methods like cursor, which is used to execute SQL queries and considered as data element **you can have multiple 
     cursor on the same data within single connection and fetch results and commit use to commit final changes to 
     database close to close connection and rollback to roll back all transactions.
+
 ### Explanation of File Structure
 
 - **crud_serverless/**: Root folder containing the project.
@@ -154,3 +155,7 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   - Connects to the database to fetch user details.
   - Supports filtering by user ID, mobile number, or manager ID.
   - Returns user data in a structured format or an error message if the operation fails.
+
+
+
+
