@@ -130,8 +130,27 @@ We are installing psycopg2-binary because it is pre-compiled version of psycopg2
   - This connection object has a methods like cursor, which is used to execute SQL queries and considered as data element **you can have multiple 
     cursor on the same data within single connection and fetch results and commit use to commit final changes to 
     database close to close connection and rollback to roll back all transactions.
-    **Note**
-## Creating Functions
-   **create_user**:
- - This funtions creates a new user.
+### Explanation of File Structure
 
+- **crud_serverless/**: Root folder containing the project.
+- **lambda-user-api/**: Contains all files related to the user API service.
+- **src/**: Source directory where all the Python files for the Lambda functions will be located when packaged on deployment.
+
+## Functions
+
+### 1. **create_user**
+- **Description**: This function creates a new user in the database.
+- **File**: `create_user.py`
+- **Key Features**:
+  - Validates input data.
+  - Checks for existing users before creation.
+  - Utilizes a database connection established by `get_db_connection.py`.
+  - Returns a success message or an error if the creation fails.
+
+### 2. **get_users**
+- **Description**: Retrieves user information based on specified criteria (user ID, mobile number, or manager ID).
+- **File**: `get_users.py`
+- **Key Features**:
+  - Connects to the database to fetch user details.
+  - Supports filtering by user ID, mobile number, or manager ID.
+  - Returns user data in a structured format or an error message if the operation fails.

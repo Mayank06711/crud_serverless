@@ -27,7 +27,7 @@ def delete_User(event, context):
 
         # Performing the deletion
         if user_id:
-            cursor.execute("DELETE FROM users WHERE user_id = %s", (user_id,))
+            cursor.execute("DELETE FROM users WHERE user_id = %s", (user_id,)) # It was more efficient to just deactivate user rather than deleting user, but did as per isntructions
         elif mob_num:
             # Normalize the mobile number, means replace +91 an spaces
             mob_num = mob_num.replace("+91", "").replace(" ", "").strip()
